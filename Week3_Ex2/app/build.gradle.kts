@@ -49,10 +49,20 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation("androidx.navigation:navigation-compose:2.8.8")
-    implementation(platform("androidx.compose:compose-bom:2025.02.00"))
-    implementation("androidx.core:core-splashscreen:1.0.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation(libs.androidx.navigation.compose)
+    implementation(platform(libs.androidx.compose.bom.v20250200))
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.material)
+    // ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // Retrofit for API calls
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // Coroutines for async operations
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.material.icons.extended)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -7,13 +7,19 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.week3_ex2.ui.DetailScreen
+import com.example.week3_ex2.ui.FirstScreen
+import com.example.week3_ex2.ui.ListScreen
+import com.example.week3_ex2.ui.SecondScreen
+import com.example.week3_ex2.ui.ThirdScreen
 import com.example.week3_ex2.ui.theme.Week3_Ex2Theme
 
 class MainActivity : ComponentActivity() {
@@ -45,6 +51,16 @@ fun MyApplication(modifier: Modifier = Modifier) {
         }
         composable("third") {
             ThirdScreen(navController)
+        }
+        composable("list") {
+            ListScreen(navController)
+        }
+        composable(
+            "detail/{id}",
+            arguments = listOf(navArgument("id") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val id = backStackEntry.arguments?.getInt("id") ?: 0
+            DetailScreen(navController, id)
         }
     })
 }
