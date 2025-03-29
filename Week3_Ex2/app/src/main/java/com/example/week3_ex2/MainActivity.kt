@@ -18,6 +18,7 @@ import androidx.navigation.navArgument
 import com.example.week3_ex2.ui.DetailScreen
 import com.example.week3_ex2.ui.FirstScreen
 import com.example.week3_ex2.ui.ListScreen
+import com.example.week3_ex2.ui.LoginScreen
 import com.example.week3_ex2.ui.SecondScreen
 import com.example.week3_ex2.ui.ThirdScreen
 import com.example.week3_ex2.ui.theme.Week3_Ex2Theme
@@ -42,7 +43,10 @@ class MainActivity : ComponentActivity() {
 fun MyApplication(modifier: Modifier = Modifier) {
     var navController = rememberNavController();
 
-    NavHost(navController = navController, startDestination = "first", builder = {
+    NavHost(navController = navController, startDestination = "login", builder = {
+        composable("login") {
+            LoginScreen(navController)
+        }
         composable("first") {
             FirstScreen(navController)
         }
