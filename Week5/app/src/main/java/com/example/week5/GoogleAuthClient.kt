@@ -90,8 +90,13 @@ class GoogleAuthClient(
     }
 
     suspend fun signOut() {
+        firebaseAuth.signOut()
         credentialManager.clearCredentialState(
             ClearCredentialStateRequest()
         )
+    }
+
+    fun getName(): String? {
+        return firebaseAuth.currentUser?.displayName
     }
 }
